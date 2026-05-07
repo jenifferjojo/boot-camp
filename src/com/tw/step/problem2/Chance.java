@@ -13,8 +13,8 @@ public class Chance {
     return new Chance(chance);
   }
 
-  public Chance getChance() {
-    return this;
+  public Chance impossibility() {
+    return Chance.create(1 - this.chance);
   }
 
   @Override
@@ -27,9 +27,5 @@ public class Chance {
   @Override
   public int hashCode() {
     return Objects.hashCode(chance);
-  }
-
-  public Chance notGetChance() {
-    return Chance.create(1 - this.chance);
   }
 }

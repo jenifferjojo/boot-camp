@@ -13,16 +13,12 @@ public class Probability {
     return new Probability(sides, count);
   }
 
-  public double chanceOfSingleSide() {
-    return 1 / this.sides;
+  public double chanceOfASpecificSide() {
+    return 1 / (this.sides * this.count);
   }
 
   public double chanceOfNotASpecificSide() {
-    return 1 - this.chanceOfSingleSide();
+    return 1 - this.chanceOfASpecificSide();
   }
-
-
-  public double chanceOfSameSide() {
-    return 1 / (this.sides * this.count);
-  }
+  
 }

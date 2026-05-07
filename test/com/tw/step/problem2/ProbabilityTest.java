@@ -8,7 +8,7 @@ public class ProbabilityTest {
   @Test
   void shouldReturnTailProbabilityOfACoin() {
     Probability probability = Probability.create(2, 1);
-    assertEquals(0.5, probability.chanceOfSingleSide());
+    assertEquals(0.5, probability.chanceOfASpecificSide());
   }
 
   @Test
@@ -20,6 +20,12 @@ public class ProbabilityTest {
   @Test
   void shouldReturnTailProbabilityOf2Coin() {
     Probability probability = Probability.create(2, 2);
-    assertEquals(0.25, probability.chanceOfSameSide());
+    assertEquals(0.25, probability.chanceOfASpecificSide());
+  }
+
+  @Test
+  void shouldReturnProbabilityOfGetting3InADice() {
+    Probability probability = Probability.create(6, 1);
+    assertEquals(0.166, probability.chanceOfASpecificSide(), 0.01);
   }
 }

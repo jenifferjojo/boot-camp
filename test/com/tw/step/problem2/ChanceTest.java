@@ -12,9 +12,16 @@ public class ChanceTest {
   }
 
   @Test
-  void shouldReturnChanceOfNotGettingTailsOnTwoCoins() {
+  void shouldReturnChanceOfGettingTailsOnTwoCoins() {
     Chance chanceOfGettingTailsOnFirstCoin = Chance.create(0.5);
     Chance chanceOfGettingTailsOnSecondCoin = Chance.create(0.5);
     assertEquals(Chance.create(0.25), chanceOfGettingTailsOnFirstCoin.and(chanceOfGettingTailsOnSecondCoin));
+  }
+
+  @Test
+  void shouldReturnChanceOfGetting3OnDice() {
+    Chance chanceOfGettingTailsOnFirstCoin = Chance.create(0.5);
+    Chance chanceOfGettingTailsOnSecondCoin = Chance.create(0.5);
+    assertEquals(Chance.create(0.75), chanceOfGettingTailsOnFirstCoin.or(chanceOfGettingTailsOnSecondCoin));
   }
 }

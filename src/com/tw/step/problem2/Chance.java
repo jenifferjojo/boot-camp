@@ -32,4 +32,10 @@ public class Chance {
   public Chance and(Chance chanceOfGettingTailsOnFirstCoin) {
     return Chance.create(chanceOfGettingTailsOnFirstCoin.chance * this.chance);
   }
+
+  public Chance or(Chance chanceOfGettingTailsOnFirstCoin) {
+    double totalProbability = chanceOfGettingTailsOnFirstCoin.chance + this.chance;
+    double complement = this.and(chanceOfGettingTailsOnFirstCoin).chance;
+    return Chance.create(totalProbability - complement);
+  }
 }

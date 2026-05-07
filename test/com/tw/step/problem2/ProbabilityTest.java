@@ -7,13 +7,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ProbabilityTest {
   @Test
   void shouldReturnTailProbabilityOfACoin() {
-    Probability probability = new Probability(2);
+    Probability probability = Probability.create(2, 1);
     assertEquals(0.5, probability.chanceOfSingleSide());
   }
 
   @Test
   void shouldReturnNotATailProbabilityOfACoin() {
-    Probability probability = new Probability(2);
+    Probability probability = Probability.create(2, 1);
     assertEquals(0.5, probability.chanceOfNotASpecificSide());
+  }
+
+  @Test
+  void shouldReturnTailProbabilityOf2Coin() {
+    Probability probability = Probability.create(2, 2);
+    assertEquals(0.25, probability.chanceOfSameSide());
   }
 }

@@ -5,7 +5,4 @@
 ### Rectangle
     - perimeter
     - area
-### Square
-    - perimeter
-    - area
  

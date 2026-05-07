@@ -8,7 +8,7 @@ public class ChanceTest {
   @Test
   void shouldReturnChanceOfNotGettingTails() {
     Chance chanceOfGettingTails = Chance.create(0.3);
-    assertEquals(Chance.create(0.7), chanceOfGettingTails.unlikelihood());
+    assertEquals(Chance.create(0.7), chanceOfGettingTails.not());
   }
 
   @Test

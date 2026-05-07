@@ -13,7 +13,7 @@ public class Chance {
     return new Chance(chance);
   }
 
-  public Chance unlikelihood() {
+  public Chance not() {
     return Chance.create(1 - this.chance);
   }
 
@@ -34,8 +34,9 @@ public class Chance {
   }
   
   public Chance or(Chance that) {
-    double totalProbability = that.chance + this.chance;
-    double overlap = this.and(that).chance;
-    return Chance.create(totalProbability - overlap);
+    Chance notOfThat = that.not();
+    Chance notOfThis = this.not();
+    Chance intersection = notOfThis.and(notOfThat);
+    return intersection.not();
   }
 }

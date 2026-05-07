@@ -1,5 +1,7 @@
 package com.tw.step.problem2;
 
+import com.tw.step.problem2.errors.ImpossibleProbabilityCreationException;
+
 import java.util.Objects;
 
 public class Chance {
@@ -9,12 +11,26 @@ public class Chance {
     this.chance = chance;
   }
 
-  public static Chance create(double chance) {
+  public static Chance create(double chance) throws ImpossibleProbabilityCreationException {
+    if (chance < 0 || chance > 1) {
+      throw new ImpossibleProbabilityCreationException("probability should be between 0 and 1");
+    }
     return new Chance(chance);
   }
 
-  public Chance not() {
+  public Chance not() throws ImpossibleProbabilityCreationException {
     return Chance.create(1 - this.chance);
+  }
+
+  public Chance and(Chance that) throws ImpossibleProbabilityCreationException {
+    return Chance.create(that.chance * this.chance);
+  }
+  
+  public Chance or(Chance that) throws ImpossibleProbabilityCreationException {
+    Chance notOfThat = that.not();
+    Chance notOfThis = this.not();
+    Chance intersection = notOfThis.and(notOfThat);
+    return intersection.not();
   }
 
   @Override
@@ -27,16 +43,5 @@ public class Chance {
   @Override
   public int hashCode() {
     return Objects.hashCode(chance);
-  }
-
-  public Chance and(Chance that) {
-    return Chance.create(that.chance * this.chance);
-  }
-  
-  public Chance or(Chance that) {
-    Chance notOfThat = that.not();
-    Chance notOfThis = this.not();
-    Chance intersection = notOfThis.and(notOfThat);
-    return intersection.not();
   }
 }

@@ -13,8 +13,8 @@ public class Rectangle {
     return new Rectangle(width, height);
   }
 
-  public static Rectangle createSquare(double width) {
-    return new Rectangle(width, width);
+  public static Rectangle createSquare(double side) {
+    return createRectangle(side, side);
   }
 
   public double area() {

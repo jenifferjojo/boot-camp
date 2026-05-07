@@ -13,7 +13,7 @@ public class Chance {
     return new Chance(chance);
   }
 
-  public Chance impossibility() {
+  public Chance unlikelihood() {
     return Chance.create(1 - this.chance);
   }
 
@@ -27,5 +27,9 @@ public class Chance {
   @Override
   public int hashCode() {
     return Objects.hashCode(chance);
+  }
+
+  public Chance and(Chance chanceOfGettingTailsOnFirstCoin) {
+    return Chance.create(chanceOfGettingTailsOnFirstCoin.chance * this.chance);
   }
 }

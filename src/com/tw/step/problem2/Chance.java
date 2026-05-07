@@ -29,13 +29,13 @@ public class Chance {
     return Objects.hashCode(chance);
   }
 
-  public Chance and(Chance chanceOfGettingTailsOnFirstCoin) {
-    return Chance.create(chanceOfGettingTailsOnFirstCoin.chance * this.chance);
+  public Chance and(Chance that) {
+    return Chance.create(that.chance * this.chance);
   }
-
-  public Chance or(Chance chanceOfGettingTailsOnFirstCoin) {
-    double totalProbability = chanceOfGettingTailsOnFirstCoin.chance + this.chance;
-    double complement = this.and(chanceOfGettingTailsOnFirstCoin).chance;
-    return Chance.create(totalProbability - complement);
+  
+  public Chance or(Chance that) {
+    double totalProbability = that.chance + this.chance;
+    double overlap = this.and(that).chance;
+    return Chance.create(totalProbability - overlap);
   }
 }

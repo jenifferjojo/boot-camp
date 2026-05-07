@@ -1,6 +1,6 @@
 package com.tw.step.problem1;
 
-public class Square {
+public class Square implements Polygon {
   private final Double side;
 
   public Square(Double side) {
@@ -11,10 +11,12 @@ public class Square {
     return new Square(side);
   }
 
+  @Override
   public double area() {
     return this.side * this.side;
   }
 
+  @Override
   public double perimeter() {
     return 4 * this.side;
   }

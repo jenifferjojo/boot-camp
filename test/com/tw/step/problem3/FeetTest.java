@@ -15,6 +15,6 @@ public class FeetTest {
   void shouldReturnTrueWhenInchesIsEqualToFeet() {
     Feet feet = Feet.create(1);
     Inches inches = Inches.create(12);
-    assertTrue(feet.same(inches));
+    assertTrue(feet.compareInches(inches));
   }
 }

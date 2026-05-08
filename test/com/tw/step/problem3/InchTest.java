@@ -10,4 +10,10 @@ public class InchTest {
     Inches inches = Inches.create(10);
     assertEquals(Inches.create(10), inches);
   }
+
+  @Test
+  void shouldCreateCentimeterEquivalent() {
+    Inches inches = Inches.create(1);
+    assertEquals(Centimeter.create(2.5), inches.toCentimeter());
+  }
 }

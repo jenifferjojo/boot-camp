@@ -14,6 +14,10 @@ public class Inches {
     return new Inches(length);
   }
 
+  public Centimeter toCentimeter() {
+    return Centimeter.create(this.length * 2.5);
+  }
+
   @Override
   public boolean equals(Object o) {
     if (o == null || getClass() != o.getClass()) return false;

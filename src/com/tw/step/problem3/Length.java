@@ -19,7 +19,7 @@ public class Length {
   public boolean equals(Object o) {
     if (o == null || getClass() != o.getClass()) return false;
     Length length = (Length) o;
-    return Double.compare(value * this.unit.factor, length.value * length.unit.factor) == 0;
+    return value - length.value < 0.000001 && unit == length.unit;
   }
 
   @Override
@@ -33,5 +33,17 @@ public class Length {
     double sumInInches = (thisInCentimeter + thatInCentimeter) / LengthUnit.INCH.factor;
 
     return Length.create(sumInInches, LengthUnit.INCH);
+  }
+
+  @Override
+  public String toString() {
+    return "Length{" +
+        "value=" + value +
+        ", unit=" + unit +
+        '}';
+  }
+
+  public boolean sameAs(Length length) {
+    return Double.compare(value * this.unit.factor, length.value * length.unit.factor) == 0;
   }
 }

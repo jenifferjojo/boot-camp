@@ -2,8 +2,7 @@ package com.tw.step.problem3;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LengthTest {
   @Test
@@ -11,7 +10,7 @@ public class LengthTest {
     Length feet = Length.create(1, LengthUnit.FEET);
     Length centimeter = Length.create(30.48, LengthUnit.CENTIMETER);
 
-    assertEquals(feet, centimeter);
+    assertTrue(feet.sameAs(centimeter));
   }
 
   @Test
@@ -19,7 +18,7 @@ public class LengthTest {
     Length feet = Length.create(2, LengthUnit.FEET);
     Length centimeter = Length.create(30.48, LengthUnit.CENTIMETER);
 
-    assertNotEquals(feet, centimeter);
+    assertFalse(feet.sameAs(centimeter));
   }
 
   @Test
@@ -27,7 +26,7 @@ public class LengthTest {
     Length mm = Length.create(10, LengthUnit.MILLIMETER);
     Length centimeter = Length.create(1, LengthUnit.CENTIMETER);
 
-    assertEquals(mm, centimeter);
+    assertTrue(mm.sameAs(centimeter));
   }
 
   @Test
@@ -35,7 +34,7 @@ public class LengthTest {
     Length mm = Length.create(10, LengthUnit.MILLIMETER);
     Length centimeter = Length.create(2, LengthUnit.CENTIMETER);
 
-    assertNotEquals(mm, centimeter);
+    assertFalse(mm.sameAs(centimeter));
   }
 
   @Test
@@ -43,7 +42,7 @@ public class LengthTest {
     Length inches = Length.create(1, LengthUnit.INCH);
     Length centimeter = Length.create(2.54, LengthUnit.CENTIMETER);
 
-    assertEquals(inches, centimeter);
+    assertTrue(inches.sameAs(centimeter));
   }
 
   @Test
@@ -51,7 +50,7 @@ public class LengthTest {
     Length inches = Length.create(1.5, LengthUnit.INCH);
     Length centimeter = Length.create(2.54, LengthUnit.CENTIMETER);
 
-    assertNotEquals(inches, centimeter);
+    assertFalse(inches.sameAs(centimeter));
   }
 
   @Test
@@ -59,7 +58,7 @@ public class LengthTest {
     Length inches = Length.create(12, LengthUnit.INCH);
     Length feet = Length.create(1, LengthUnit.FEET);
 
-    assertEquals(inches, feet);
+    assertTrue(feet.sameAs(inches));
   }
 
   @Test
@@ -67,7 +66,7 @@ public class LengthTest {
     Length inches = Length.create(12, LengthUnit.INCH);
     Length feet = Length.create(1.5, LengthUnit.FEET);
 
-    assertNotEquals(inches, feet);
+    assertFalse(feet.sameAs(inches));
   }
 
   @Test

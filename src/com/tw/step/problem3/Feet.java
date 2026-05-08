@@ -2,7 +2,7 @@ package com.tw.step.problem3;
 
 import java.util.Objects;
 
-public class Feet {
+public class Feet implements Length {
   private final double length;
 
   private Feet(double length) {
@@ -13,13 +13,15 @@ public class Feet {
     return new Feet(length);
   }
 
-  public boolean compareInches(Inches inches) {
+  @Override
+  public boolean same(Length length) {
     Centimeter feetInCentimeter = this.toCentimeter();
-    return feetInCentimeter.equals(inches.toCentimeter());
+    return feetInCentimeter.equals(length.toCentimeter());
   }
 
-  private Centimeter toCentimeter() {
-    return Centimeter.create(this.length * 2.5 * 12);
+  @Override
+  public Centimeter toCentimeter() {
+    return Centimeter.create(this.length * 2.54 * 12);
   }
 
   @Override

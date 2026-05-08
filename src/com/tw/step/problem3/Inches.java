@@ -1,7 +1,5 @@
 package com.tw.step.problem3;
 
-import java.util.Objects;
-
 public class Inches implements Length {
 
   private final double length;

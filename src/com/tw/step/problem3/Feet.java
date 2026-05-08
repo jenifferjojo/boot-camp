@@ -1,7 +1,5 @@
 package com.tw.step.problem3;
 
-import java.util.Objects;
-
 public class Feet implements Length {
   private final double length;
 

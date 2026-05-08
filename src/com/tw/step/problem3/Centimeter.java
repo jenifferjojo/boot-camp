@@ -15,11 +15,6 @@ public class Centimeter implements Length{
   }
 
   @Override
-  public boolean same(Length length) {
-    return this.equals(length.toCentimeter());
-  }
-
-  @Override
   public Centimeter toCentimeter() {
     return this;
   }

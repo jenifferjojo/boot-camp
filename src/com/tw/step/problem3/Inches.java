@@ -15,12 +15,6 @@ public class Inches implements Length {
   }
 
   @Override
-  public boolean same(Length length) {
-    Centimeter inchesInCentimeter = this.toCentimeter();
-    return inchesInCentimeter.equals(length.toCentimeter());
-  }
-
-  @Override
   public Centimeter toCentimeter() {
     return Centimeter.create(this.length * 2.54);
   }

@@ -10,12 +10,6 @@ public class MilliMeter implements Length{
   }
 
   @Override
-  public boolean same(Length length) {
-    Centimeter centimeter = this.toCentimeter();
-    return centimeter.equals(length.toCentimeter());
-  }
-
-  @Override
   public Centimeter toCentimeter() {
     return Centimeter.create(this.length / 10);
   }

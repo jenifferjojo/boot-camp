@@ -78,4 +78,34 @@ public class LengthTest {
 
     assertEquals(Length.create(4, LengthUnit.INCH), sum);
   }
+
+  @Test
+  void shouldReturnTheSumOfCentimeterAndInchesInInches() {
+    Length cm = Length.create(2.54, LengthUnit.CENTIMETER);
+    Length inches = Length.create(2, LengthUnit.INCH);
+
+    Length sum = inches.add(cm);
+
+    assertEquals(Length.create(3, LengthUnit.INCH), sum);
+  }
+
+  @Test
+  void shouldReturnTheSumOfCentimeterAndFeetInInches() {
+    Length cm = Length.create(2.54, LengthUnit.CENTIMETER);
+    Length feet = Length.create(1, LengthUnit.FEET);
+
+    Length sum = feet.add(cm);
+
+    assertEquals(Length.create(13, LengthUnit.INCH), sum);
+  }
+
+  @Test
+  void shouldReturnTheSumOfInchesAndFeetInInches() {
+    Length inches = Length.create(1, LengthUnit.INCH);
+    Length feet = Length.create(1, LengthUnit.FEET);
+
+    Length sum = feet.add(inches);
+
+    assertEquals(Length.create(13, LengthUnit.INCH), sum);
+  }
 }

@@ -6,7 +6,7 @@ public class Volume {
   private final double value;
   private final VolumeUnit unit;
 
-  public Volume(double value, VolumeUnit unit) {
+  private Volume(double value, VolumeUnit unit) {
     this.value = value;
     this.unit = unit;
   }

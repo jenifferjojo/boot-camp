@@ -6,7 +6,7 @@ public class Length {
   private final double value;
   private final LengthUnit unit;
 
-  public Length(double value, LengthUnit unit) {
+  private Length(double value, LengthUnit unit) {
     this.value = value;
     this.unit = unit;
   }
@@ -28,6 +28,10 @@ public class Length {
   }
 
   public Length add(Length that) {
-    return Length.create(this.value + that.value, this.unit);
+    double thisInCentimeter = this.value * this.unit.factor;
+    double thatInCentimeter = that.value * that.unit.factor;
+    double sumInInches = (thisInCentimeter + thatInCentimeter) / LengthUnit.INCH.factor;
+
+    return Length.create(sumInInches, LengthUnit.INCH);
   }
 }

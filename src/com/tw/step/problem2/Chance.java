@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Chance {
   private final double chance;
 
-  public Chance(double chance) {
+  private Chance(double chance) {
     this.chance = chance;
   }
 
@@ -27,10 +27,7 @@ public class Chance {
   }
   
   public Chance or(Chance that) throws ImpossibleProbabilityCreationException {
-    Chance notOfThat = that.not();
-    Chance notOfThis = this.not();
-    Chance intersection = notOfThis.and(notOfThat);
-    return intersection.not();
+    return this.not().and(that.not()).not();
   }
 
   @Override

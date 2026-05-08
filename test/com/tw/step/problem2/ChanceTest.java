@@ -33,5 +33,10 @@ public class ChanceTest {
         ImpossibleProbabilityCreationException.class,
         () -> Chance.create(2)
     );
+
+    assertThrows(
+        ImpossibleProbabilityCreationException.class,
+        () -> Chance.create(-1)
+    );
   }
 }

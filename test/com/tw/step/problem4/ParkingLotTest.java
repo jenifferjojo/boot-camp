@@ -1,22 +1,43 @@
 package com.tw.step.problem4;
 
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
   @Test
-  void shouldParkTheCar() {
-    List<Car> parkedCars = new ArrayList<>(2);
-    ParkingLot parkingLot = new ParkingLot(parkedCars);
+  void shouldParkTheCarIfLotIsAvailable() {
+    ParkingLot parkingLot = ParkingLot.create(2);
+    Car car = new Car(1);
 
+    assertTrue(parkingLot.parkCar(car));
+  }
+
+  @Test
+  void shouldNotParkTheCarIfLotIsFull() {
+    ParkingLot parkingLot = ParkingLot.create(1);
     Car car = new Car(1);
     parkingLot.parkCar(car);
 
-    assertTrue(parkedCars.contains(car));
+    assertFalse(parkingLot.parkCar(car));
+  }
+
+  @Test
+  void shouldReturnTrueWhenTheParkingLotIsFull() {
+    ParkingLot parkingLot = ParkingLot.create(1);
+    Car car = new Car(1);
+
+    parkingLot.parkCar(car);
+
+    assertTrue(parkingLot.isFull());
+  }
+
+  @Test
+  void shouldReturnFalseWhenTheParkingLotIsNotFull() {
+    ParkingLot parkingLot = ParkingLot.create(2);
+    Car car = new Car(1);
+
+    parkingLot.parkCar(car);
+
+    assertFalse(parkingLot.isFull());
   }
 }

@@ -1,12 +1,13 @@
 package com.tw.step.problem3;
 
+import com.tw.step.problem3.error.IllegalLengthCreationException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LengthTest {
   @Test
-  void shouldCompareToTrueWhenFeetEqualToCentimeter() {
+  void shouldCompareToTrueWhenFeetEqualToCentimeter() throws IllegalLengthCreationException {
     Length feet = Length.create(1, LengthUnit.FEET);
     Length centimeter = Length.create(30.48, LengthUnit.CENTIMETER);
 
@@ -14,7 +15,7 @@ public class LengthTest {
   }
 
   @Test
-  void shouldCompareToFalseWhenFeetIsNotEqualToCentimeter() {
+  void shouldCompareToFalseWhenFeetIsNotEqualToCentimeter() throws IllegalLengthCreationException {
     Length feet = Length.create(2, LengthUnit.FEET);
     Length centimeter = Length.create(30.48, LengthUnit.CENTIMETER);
 
@@ -22,7 +23,7 @@ public class LengthTest {
   }
 
   @Test
-  void shouldCompareToTrueWhenCentimeterEqualToMillimeter() {
+  void shouldCompareToTrueWhenCentimeterEqualToMillimeter() throws IllegalLengthCreationException {
     Length mm = Length.create(10, LengthUnit.MILLIMETER);
     Length centimeter = Length.create(1, LengthUnit.CENTIMETER);
 
@@ -30,7 +31,7 @@ public class LengthTest {
   }
 
   @Test
-  void shouldCompareToFalseWhenCentimeterIsNotEqualToMillimeter() {
+  void shouldCompareToFalseWhenCentimeterIsNotEqualToMillimeter() throws IllegalLengthCreationException {
     Length mm = Length.create(10, LengthUnit.MILLIMETER);
     Length centimeter = Length.create(2, LengthUnit.CENTIMETER);
 
@@ -38,7 +39,7 @@ public class LengthTest {
   }
 
   @Test
-  void shouldCompareToTrueWhenCentimeterEqualToInches() {
+  void shouldCompareToTrueWhenCentimeterEqualToInches() throws IllegalLengthCreationException {
     Length inches = Length.create(1, LengthUnit.INCH);
     Length centimeter = Length.create(2.54, LengthUnit.CENTIMETER);
 
@@ -46,7 +47,7 @@ public class LengthTest {
   }
 
   @Test
-  void shouldCompareToFalseWhenCentimeterIsNotEqualToInches() {
+  void shouldCompareToFalseWhenCentimeterIsNotEqualToInches() throws IllegalLengthCreationException {
     Length inches = Length.create(1.5, LengthUnit.INCH);
     Length centimeter = Length.create(2.54, LengthUnit.CENTIMETER);
 
@@ -54,7 +55,7 @@ public class LengthTest {
   }
 
   @Test
-  void shouldCompareToTrueWhenFeetEqualToInches() {
+  void shouldCompareToTrueWhenFeetEqualToInches() throws IllegalLengthCreationException {
     Length inches = Length.create(12, LengthUnit.INCH);
     Length feet = Length.create(1, LengthUnit.FEET);
 
@@ -62,7 +63,7 @@ public class LengthTest {
   }
 
   @Test
-  void shouldCompareToFalseWhenFeetIsNotEqualToInches() {
+  void shouldCompareToFalseWhenFeetIsNotEqualToInches() throws IllegalLengthCreationException {
     Length inches = Length.create(12, LengthUnit.INCH);
     Length feet = Length.create(1.5, LengthUnit.FEET);
 
@@ -70,7 +71,7 @@ public class LengthTest {
   }
 
   @Test
-  void shouldReturnTheSumOfLengthOfInches() {
+  void shouldReturnTheSumOfLengthOfInches() throws IllegalLengthCreationException {
     Length length1 = Length.create(2, LengthUnit.INCH);
     Length length2 = Length.create(2, LengthUnit.INCH);
     Length sum = length1.add(length2);
@@ -79,7 +80,7 @@ public class LengthTest {
   }
 
   @Test
-  void shouldReturnTheSumOfCentimeterAndInchesInInches() {
+  void shouldReturnTheSumOfCentimeterAndInchesInInches() throws IllegalLengthCreationException {
     Length cm = Length.create(2.54, LengthUnit.CENTIMETER);
     Length inches = Length.create(2, LengthUnit.INCH);
 
@@ -89,7 +90,7 @@ public class LengthTest {
   }
 
   @Test
-  void shouldReturnTheSumOfCentimeterAndFeetInInches() {
+  void shouldReturnTheSumOfCentimeterAndFeetInInches() throws IllegalLengthCreationException {
     Length cm = Length.create(2.54, LengthUnit.CENTIMETER);
     Length feet = Length.create(1, LengthUnit.FEET);
 
@@ -99,12 +100,20 @@ public class LengthTest {
   }
 
   @Test
-  void shouldReturnTheSumOfInchesAndFeetInInches() {
+  void shouldReturnTheSumOfInchesAndFeetInInches() throws IllegalLengthCreationException {
     Length inches = Length.create(1, LengthUnit.INCH);
     Length feet = Length.create(1, LengthUnit.FEET);
 
     Length sum = feet.add(inches);
 
     assertEquals(Length.create(13, LengthUnit.INCH), sum);
+  }
+
+  @Test
+  void shouldThrowIfLengthIsInNegative() {
+    assertThrows(
+        IllegalLengthCreationException.class,
+        () -> Length.create(-1, LengthUnit.INCH)
+    );
   }
 }

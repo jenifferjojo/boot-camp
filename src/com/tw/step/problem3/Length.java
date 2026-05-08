@@ -1,5 +1,7 @@
 package com.tw.step.problem3;
 
+import com.tw.step.problem3.error.IllegalLengthCreationException;
+
 import java.util.Objects;
 
 public class Length {
@@ -11,7 +13,11 @@ public class Length {
     this.unit = unit;
   }
 
-  static Length create(double value, LengthUnit unit) {
+  static Length create(double value, LengthUnit unit) throws IllegalLengthCreationException{
+    if(value < 0) {
+      throw new IllegalLengthCreationException("Length has to be a whole number");
+    }
+
     return new Length(value, unit);
   }
 
@@ -27,20 +33,12 @@ public class Length {
     return Objects.hash(value, unit);
   }
 
-  public Length add(Length that) {
+  public Length add(Length that) throws IllegalLengthCreationException {
     double thisInCentimeter = this.value * this.unit.factor;
     double thatInCentimeter = that.value * that.unit.factor;
     double sumInInches = (thisInCentimeter + thatInCentimeter) / LengthUnit.INCH.factor;
 
     return Length.create(sumInInches, LengthUnit.INCH);
-  }
-
-  @Override
-  public String toString() {
-    return "Length{" +
-        "value=" + value +
-        ", unit=" + unit +
-        '}';
   }
 
   public boolean sameAs(Length length) {

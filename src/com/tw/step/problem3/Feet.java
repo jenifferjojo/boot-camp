@@ -23,16 +23,4 @@ public class Feet implements Length {
   public Centimeter toCentimeter() {
     return Centimeter.create(this.length * 2.54 * 12);
   }
-
-  @Override
-  public boolean equals(Object o) {
-    if (o == null || getClass() != o.getClass()) return false;
-    Feet feet = (Feet) o;
-    return Double.compare(length, feet.length) == 0;
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hashCode(length);
-  }
 }

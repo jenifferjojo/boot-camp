@@ -24,16 +24,4 @@ public class Inches implements Length {
   public Centimeter toCentimeter() {
     return Centimeter.create(this.length * 2.54);
   }
-
-  @Override
-  public boolean equals(Object o) {
-    if (o == null || getClass() != o.getClass()) return false;
-    Inches inches = (Inches) o;
-    return Double.compare(length, inches.length) == 0;
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hashCode(length);
-  }
 }

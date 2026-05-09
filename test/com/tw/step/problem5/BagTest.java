@@ -10,14 +10,14 @@ public class BagTest {
   void shouldAddBallsToABagIfTheBagHasLessThanCapacity() {
     Bag bag = new Bag(12);
 
-    assertTrue(bag.add());
+    assertTrue(bag.add(Ball.RED));
   }
 
   @Test
   void shouldNotAddBallsToABagIfTheBagHasMoreThanOrEqualToCapacity() {
     Bag bag = new Bag(1);
 
-    bag.add();
-    assertFalse(bag.add());
+    bag.add(Ball.RED);
+    assertFalse(bag.add(Ball.RED));
   }
 }

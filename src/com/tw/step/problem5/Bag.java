@@ -1,20 +1,26 @@
 package com.tw.step.problem5;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Bag {
+  private double currentCapacity;
   private final double capacity;
-  private int balls;
+  private final Map<Ball, Integer> balls;
 
   public Bag(double capacity) {
     this.capacity = capacity;
-    this.balls = 0;
+    this.currentCapacity = capacity;
+    this.balls = new HashMap<>();
   }
 
-  public boolean add() {
-    if(this.balls >= this.capacity) {
+  public boolean add(Ball color) {
+    if(this.currentCapacity == 0) {
       return  false;
     }
 
-    this.balls++;
+    this.currentCapacity--;
+    this.balls.put(color, this.balls.getOrDefault(color, 0) + 1);
     return true;
   }
 }

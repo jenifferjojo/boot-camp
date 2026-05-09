@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Bag {
+  private final Map<Ball, Integer> bag;
   private double currentCapacity;
   private final double capacity;
-  private final Map<Ball, Integer> balls;
 
   public Bag(double capacity) {
     this.capacity = capacity;
     this.currentCapacity = capacity;
-    this.balls = new HashMap<>();
+    this.bag = new HashMap<>();
   }
 
   public boolean add(Ball color) {
@@ -19,12 +19,16 @@ public class Bag {
       return  false;
     }
 
-    if(this.balls.getOrDefault(Ball.GREEN, 0) >= 3 && color == Ball.GREEN) {
+    if(this.bag.getOrDefault(Ball.GREEN, 0) >= 3 && color == Ball.GREEN) {
+      return false;
+    }
+
+    if(this.bag.getOrDefault(Ball.GREEN, 0) == 2 * this.bag.getOrDefault(Ball.RED, 0) && color == Ball.RED) {
       return false;
     }
 
     this.currentCapacity--;
-    this.balls.put(color, this.balls.getOrDefault(color, 0) + 1);
+    this.bag.put(color, this.bag.getOrDefault(color, 0) + 1);
     return true;
   }
 }

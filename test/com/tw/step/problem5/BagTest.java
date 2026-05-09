@@ -10,7 +10,7 @@ public class BagTest {
   void shouldAddBallsToABagIfTheBagHasLessThanCapacity() {
     Bag bag = new Bag(12);
 
-    assertTrue(bag.add(Ball.RED));
+    assertTrue(bag.add(Ball.GREEN));
   }
 
   @Test
@@ -30,5 +30,20 @@ public class BagTest {
     bag.add(Ball.GREEN);
 
     assertFalse(bag.add(Ball.GREEN));
+  }
+
+  @Test
+  void shouldAddRedBallsIfTheBagContainsLessRedBallsThanTheDoubleOfGreen() {
+    Bag bag = new Bag(5);
+    bag.add(Ball.GREEN);
+
+    assertTrue(bag.add(Ball.RED));
+  }
+
+  @Test
+  void shouldNotAddRedBallsIfTheBagContainsMoreRedBallsThanTheDoubleOfGreen() {
+    Bag bag = new Bag(5);
+
+    assertFalse(bag.add(Ball.RED));
   }
 }

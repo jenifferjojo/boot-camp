@@ -5,10 +5,10 @@ import java.util.Map;
 
 public class Bag {
   private final Map<Ball, Integer> bag;
-  private double taken;
-  private final double capacity;
+  private int taken;
+  private final int capacity;
 
-  public Bag(double capacity) {
+  public Bag(int capacity) {
     this.capacity = capacity;
     this.taken = 0;
     this.bag = new HashMap<>();
@@ -37,8 +37,23 @@ public class Bag {
     }
 
     if (color == Ball.YELLOW) {
-      return (count / this.taken * 100) >= 40;
+      return count <= this.taken * 0.4;
     }
     return false;
+  }
+
+  public String display() {
+    StringBuilder summary = new StringBuilder();
+
+    this.bag.forEach((color, count) -> {
+      String ballSummary = String.format("%s : %d\n", color.name(), count);
+      summary.append(ballSummary);
+    });
+
+    summary.append("\n");
+    String total = String.format("TOTAL : %d", this.taken);
+    summary.append(total);
+
+    return summary.toString();
   }
 }

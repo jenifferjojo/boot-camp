@@ -7,17 +7,17 @@ public class ParkingLot {
   private final List<Car> parkingArea;
   private final Integer capacity;
 
-  private ParkingLot(List<Car> parked, Integer capacity) {
-    this.parkingArea = parked;
+  private ParkingLot(List<Car> lot, Integer capacity) {
+    this.parkingArea = lot;
     this.capacity = capacity;
   }
 
   public static ParkingLot create(Integer capacity) {
-    List<Car> parkedCars = new ArrayList<>(capacity);
-    return new ParkingLot(parkedCars, capacity);
+    List<Car> lot = new ArrayList<>(capacity);
+    return new ParkingLot(lot, capacity);
   }
 
-  public boolean parkCar(Car car) {
+  public boolean park(Car car) {
     if (!this.isFull()) {
       parkingArea.add(car);
       return true;

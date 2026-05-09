@@ -9,16 +9,16 @@ public class ParkingLotTest {
     ParkingLot parkingLot = ParkingLot.create(2);
     Car car = new Car(1);
 
-    assertTrue(parkingLot.parkCar(car));
+    assertTrue(parkingLot.park(car));
   }
 
   @Test
   void shouldNotParkTheCarIfLotIsFull() {
     ParkingLot parkingLot = ParkingLot.create(1);
     Car car = new Car(1);
-    parkingLot.parkCar(car);
+    parkingLot.park(car);
 
-    assertFalse(parkingLot.parkCar(car));
+    assertFalse(parkingLot.park(car));
   }
 
   @Test
@@ -26,7 +26,7 @@ public class ParkingLotTest {
     ParkingLot parkingLot = ParkingLot.create(1);
     Car car = new Car(1);
 
-    parkingLot.parkCar(car);
+    parkingLot.park(car);
 
     assertTrue(parkingLot.isFull());
   }
@@ -36,7 +36,7 @@ public class ParkingLotTest {
     ParkingLot parkingLot = ParkingLot.create(2);
     Car car = new Car(1);
 
-    parkingLot.parkCar(car);
+    parkingLot.park(car);
 
     assertFalse(parkingLot.isFull());
   }

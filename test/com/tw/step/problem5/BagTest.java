@@ -20,4 +20,15 @@ public class BagTest {
     bag.add(Ball.RED);
     assertFalse(bag.add(Ball.RED));
   }
+
+  @Test
+  void shouldNotAllowAddingMoreGreenBallsIfTheBagAlreadyHas3GreenBall() {
+    Bag bag = new Bag(5);
+
+    bag.add(Ball.GREEN);
+    bag.add(Ball.GREEN);
+    bag.add(Ball.GREEN);
+
+    assertFalse(bag.add(Ball.GREEN));
+  }
 }

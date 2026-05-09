@@ -19,6 +19,10 @@ public class Bag {
       return  false;
     }
 
+    if(this.balls.getOrDefault(Ball.GREEN, 0) >= 3 && color == Ball.GREEN) {
+      return false;
+    }
+
     this.currentCapacity--;
     this.balls.put(color, this.balls.getOrDefault(color, 0) + 1);
     return true;
